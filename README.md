@@ -54,7 +54,7 @@ To automatically disable the keyboard when the system starts:
 2. Add the following content:
    ```bash
    #!/bin/bash
-   xinput disable <keyboard_ID>
+   xinput list | grep "AT Translated Set 2 keyboard" | grep -o 'id=[0-9]\+' | cut -d= -f2 | xargs -I {} xinput disable {}
    ```
 3. Make the script executable:
    ```bash
